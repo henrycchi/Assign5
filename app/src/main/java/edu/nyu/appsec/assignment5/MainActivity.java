@@ -13,9 +13,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String KNOWN_HOST = "appsecclass.report";
 
     private class MyWebViewClient extends WebViewClient {
-        /*
-        This is never called but it could just be a platform issue.
-         */
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
             String url = String.valueOf(request.getUrl());
@@ -30,14 +27,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     }
-
-    /* Get location data to provide language localization
-    *  Supported languages ar-DZ zh-CN en-US en-IN en-AU fr-FR
-    */
-    /*
-    Note
-        Disabled location reporting methods
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,17 +36,7 @@ public class MainActivity extends AppCompatActivity {
         view.setWebViewClient(new MyWebViewClient());
 
         WebSettings settings = view.getSettings();
-        /*
-        TODO
-            Disable file access
-         */
         settings.setJavaScriptEnabled(true);
-
-        /*
-        TODO
-            Disable location tracking
-         */
-
         setContentView(view);
         view.loadUrl(SPELL_CHECK_URL + "register");
     }
